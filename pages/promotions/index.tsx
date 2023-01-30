@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
-import ErrorMessage from '../components/error';
-import Form from '../components/form';
-import Loading from '../components/loading';
-import { useSession } from '../context/session';
-import { useProductList} from '../lib/hooks';
-import { FormData } from '../types';
+import ErrorMessage from '@components/error';
+import Form from '@components/form';
+import Loading from '@components/loading';
+import { useProductList} from '@lib/hooks';
+import { FormData } from '@types';
+import { useSession } from '../../context/session';
 
 const ProductInfo = () => {
     const router = useRouter();
@@ -25,7 +25,7 @@ const ProductInfo = () => {
             mutateList([ {  ...data }], false);
 
             // Update product details
-            await fetch(`/api/products/?context=${encodedContext}`, {
+            await fetch(`/api/promotions/?context=${encodedContext}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(apiFormattedData),
